@@ -37,6 +37,11 @@
 		</dependency>
 
 		<dependency>
+<groupId>org.codehaus.mojo</groupId>
+<artifactId>axistools-maven-plugin</artifactId>
+<version>1.4</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -55,6 +60,27 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+<plugin>
+<groupId>org.codehaus.mojo</groupId>
+<artifactId>axistools-maven-plugin</artifactId>
+<version>1.4</version>
+<configuration>
+  <sourceDirectory>${project.basedir}/src/main/resources</sourceDirectory>
+  <outputDirectory>${project.build.directory}/generated/rpc</outputDirectory>
+  <packageSpace>com.company.wsdl</packageSpace>
+  <testCases>false</testCases>
+  <serverSide>true</serverSide>
+  <subPackageByFileName>false</subPackageByFileName>
+</configuration>
+<executions>
+  <execution>
+    <goals>
+      <goal>wsdl2java</goal>
+    </goals>
+  </execution>
+</executions>
+</plugin>
+<!--
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jaxb2-maven-plugin</artifactId>
@@ -73,6 +99,7 @@
 					</sources>
 				</configuration>
 			</plugin>
+-->
 		</plugins>
 	</build>
 
